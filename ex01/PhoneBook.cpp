@@ -47,11 +47,11 @@ int	main(int argc, char **argv)
 	std::cin >> Input;
 
 	if (Input.compare(ADD) == 0)
-		std::cout << "ADD" << PhoneBook.NewContact() << std::endl;
+		std::cout << PhoneBook.NewContact() << std::endl;
 	else if (Input.compare(SEARCH) == 0)
-		std::cout << "SEARCH" << PhoneBook.NewContact() << std::endl;
+		std::cout << PhoneBook.NewContact() << std::endl;
 	else if (Input.compare(ADD) == 0)
-		std::cout << "" << PhoneBook.NewContact() << std::endl;
+		std::cout << PhoneBook.NewContact() << std::endl;
 	else
 		return (0);
 }
