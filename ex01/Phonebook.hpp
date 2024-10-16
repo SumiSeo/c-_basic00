@@ -3,14 +3,16 @@
 
 # include <iostream>
 # include <list>
+# include <string>
 
 class Contact
 {
   public:
-	int Index;
 	std::string FirstName;
 	std::string LastName;
 	std::string NickName;
+	int PhoneNumber;
+	std::string DarkSecret;
 };
 
 #endif // PHONEBOOK_HPP
