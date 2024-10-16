@@ -1,6 +1,6 @@
-NAME = megaphone
+NAME = contact
 
-SRC = megaphone.cpp
+SRC = PhoneBook.cpp Contact.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -8,21 +8,21 @@ CC = c++
 
 CFLAGS = -g3 -Wall -Wextra -Werror -std=c++98
 
-RM = rm -f
+RM = rm -rf
 
 all : $(NAME)
 
-.cpp.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+.cpp.o :
+		$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
 
 $(NAME) : $(OBJ) Makefile
-	$(CC) $(CFLAGS) -o $(NAME) -g3 $(OBJ)
+		$(CC) $(CFLAGS) -o $(NAME) -g $(OBJ)
 
 clean :
-	$(RM) $(NAME) $(OBJ)
+		$(RM) $(NAME) $(OBJ)
 
 fclean : clean
-	$(RM) $(NAME)
+		$(RM) $(NAME)
 
 re : fclean all
 

@@ -3,7 +3,7 @@
 
 // create a function to switch lower case to upper case
 
-std::string to_upper(char *s)
+void	to_upper(char *s)
 {
 	int i = 0;
 	while (s[i])
@@ -11,7 +11,6 @@ std::string to_upper(char *s)
 		std::cout << putwchar(toupper(s[i]));
 		i++;
 	}
-	return (s);
 };
 
 int	main(int argc, char **argv)
