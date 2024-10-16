@@ -13,6 +13,10 @@ class Contact
 	std::string NickName;
 	int PhoneNumber;
 	std::string DarkSecret;
+
+	void Add()
+	{
+	}
 };
 
 #endif // PHONEBOOK_HPP

@@ -11,14 +11,15 @@
 class PhoneBook
 {
   public:
-	std::list<std::string> ContactLists;
-	Contact NewContact;
+	std::list<std::string> ContactLists[8];
 
-	std::string Add()
+	std::string NewContact()
 	{
-		return (NewContact.FirstName = "Sumi");
+		Contact Contact;
+		Contact.Add();
+		return (Contact.FirstName = "Sumi");
 	}
-	void Search()
+	void SearchContact()
 	{
 	}
 
@@ -46,11 +47,11 @@ int	main(int argc, char **argv)
 	std::cin >> Input;
 
 	if (Input.compare(ADD) == 0)
-		std::cout << "ADD" << PhoneBook.Add() << std::endl;
+		std::cout << "ADD" << PhoneBook.NewContact() << std::endl;
 	else if (Input.compare(SEARCH) == 0)
-		std::cout << "SEARCH" << PhoneBook.Add() << std::endl;
+		std::cout << "SEARCH" << PhoneBook.NewContact() << std::endl;
 	else if (Input.compare(ADD) == 0)
-		std::cout << "" << PhoneBook.Add() << std::endl;
+		std::cout << "" << PhoneBook.NewContact() << std::endl;
 	else
 		return (0);
 }
