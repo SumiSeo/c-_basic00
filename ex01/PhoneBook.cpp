@@ -1,17 +1,9 @@
 #include "Phonebook.hpp"
 
-// array of contact
-
-// maxiumum : 8 contacts
-
-// dynamic allocation is forbidden
-
-// ADD / SEARCH / EXIT
-
 class PhoneBook
 {
   public:
-	std::list<std::string> ContactLists[8];
+	std::list<Contact> ContactLists;
 	int index;
 
 	std::string NewContact()
@@ -31,10 +23,22 @@ class PhoneBook
 		std::cout << "Write new contact's darkest secret." << std::endl;
 		std::cin >> Contact.DarkSecret;
 
+		ContactLists.push_back(Contact);
+
 		return ("The new contact is added to your phonebook successfully ! ");
 	}
-	void SearchContact()
+	std::string SearchContact()
 	{
+		int i;
+
+		std::cout << "Search your contact's information... :";
+		std::cin >> i;
+
+		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		{
+			std::cout << it->FirstName << std::endl;
+		}
+		return ("Contact Information : ");
 	}
 
 	void exit()
@@ -59,15 +63,21 @@ int	main(int argc, char **argv)
 
 	PhoneBook PhoneBook;
 
-	std::cout << "Waiting you command ... : ";
-	std::cin >> Input;
+	while (42)
+	{
+		std::cout << "Waiting you command ... : ";
+		std::cin >> Input;
 
-	if (Input.compare(ADD) == 0)
-		std::cout << PhoneBook.NewContact() << std::endl;
-	else if (Input.compare(SEARCH) == 0)
-		std::cout << PhoneBook.NewContact() << std::endl;
-	else if (Input.compare(ADD) == 0)
-		std::cout << PhoneBook.NewContact() << std::endl;
-	else
-		return (0);
+		if (Input.compare(ADD) == 0)
+			std::cout << PhoneBook.NewContact() << std::endl;
+		else if (Input.compare(SEARCH) == 0)
+			std::cout << PhoneBook.SearchContact() << std::endl;
+		else if (Input.compare(ADD) == 0)
+			std::cout << PhoneBook.NewContact() << std::endl;
+		else
+		{
+			std::cout << "The Command is wrong" << std::endl;
+			break ;
+		}
+	}
 }

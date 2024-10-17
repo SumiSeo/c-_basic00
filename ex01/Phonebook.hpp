@@ -8,11 +8,11 @@
 class Contact
 {
   public:
+	int index;
 	std::string FirstName;
 	std::string LastName;
 	std::string Nickname;
-	int PhoneNumber;
-	int index;
+	std::string PhoneNumber;
 	std::string DarkSecret;
 };
 
