@@ -1,5 +1,6 @@
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#pragma once
+#ifndef __PHONEBOOK__H
+# define __PHONEBOOK__H
 
 # include <iomanip>
 # include <iostream>
@@ -24,4 +25,4 @@ void	FormatContact(int index, std::string LastName, std::string Nickname,
 			std::string FirstName);
 void	DisplayContactColumn(void);
 
-#endif // PHONEBOOK_HPP
+#endif // __PHONEBOOK_H__
