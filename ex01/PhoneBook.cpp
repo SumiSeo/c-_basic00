@@ -25,6 +25,17 @@ class PhoneBook
 
 		return ("The new contact is added to your phonebook successfully ! ");
 	}
+	std::string FormatStr(std::string s)
+	{
+		if (s.length() > 10)
+		{
+			std::string SplitStr = s.substr(0, 10);
+			SplitStr[9] = '.';
+			return (SplitStr);
+		}
+		else
+			return (s);
+	}
 	void FormatContact(std::string FirstName, std::string LastName,
 		std::string Nickname, int index)
 	{
@@ -44,9 +55,10 @@ class PhoneBook
 		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
 		{
 			if (i == it->index)
-				FormatContact(it->FirstName, it->LastName, it->Nickname,
-					it->index);
+				FormatContact(FormatStr(it->FirstName), FormatStr(it->LastName),
+					FormatStr(it->Nickname), it->index);
 		}
+
 		return ("Thank you !");
 	}
 
@@ -62,15 +74,13 @@ int	main(int argc, char **argv)
 	std::string ADD;
 	std::string SEARCH;
 	std::string EXIT;
-
+	PhoneBook PhoneBook;
 	ADD = "ADD";
 	SEARCH = "SEARCH";
 	EXIT = "EXIT";
 
 	if (argc > 1)
 		return (0);
-
-	PhoneBook PhoneBook;
 
 	while (42)
 	{
@@ -84,6 +94,6 @@ int	main(int argc, char **argv)
 		else if (Input.compare(ADD) == 0)
 			std::cout << PhoneBook.NewContact() << std::endl;
 		else
-			std::cout << "Please write another command" << std::endl;
+			std::cerr << "Please write another command" << std::endl;
 	}
 }

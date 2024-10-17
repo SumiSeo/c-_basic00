@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <list>
+# include <ostream>
 # include <string>
 
 class Contact
