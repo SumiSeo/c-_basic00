@@ -12,12 +12,26 @@ class PhoneBook
 {
   public:
 	std::list<std::string> ContactLists[8];
+	int index;
 
 	std::string NewContact()
 	{
 		Contact Contact;
-		Contact.Add();
-		return (Contact.FirstName = "Sumi");
+
+		index++;
+		Contact.index = index;
+		std::cout << "Write new contact's first name." << std::endl;
+		std::cin >> Contact.FirstName;
+		std::cout << "Write new contact's last name." << std::endl;
+		std::cin >> Contact.LastName;
+		std::cout << "Write new contact's nickname." << std::endl;
+		std::cin >> Contact.Nickname;
+		std::cout << "Write new contact's phone number." << std::endl;
+		std::cin >> Contact.PhoneNumber;
+		std::cout << "Write new contact's darkest secret." << std::endl;
+		std::cin >> Contact.DarkSecret;
+
+		return ("The new contact is added to your phonebook successfully ! ");
 	}
 	void SearchContact()
 	{
@@ -44,6 +58,8 @@ int	main(int argc, char **argv)
 		return (0);
 
 	PhoneBook PhoneBook;
+
+	std::cout << "Waiting you command ... : ";
 	std::cin >> Input;
 
 	if (Input.compare(ADD) == 0)
