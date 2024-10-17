@@ -8,13 +8,36 @@ class PhoneBook
 
 	int FindMinIndex()
 	{
-		//iterate contact lists and find mininum index 
+		int min = ContactLists.begin()->index;
+		// iterate contact lists and find mininum index
+		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		{
+			if (min > it->index)
+				min = it->index;
+		}
+		return (min);
 	}
 
+	void ReplaceContact(int min, std::string FirstName, std::string LastName,
+		std::string Nickname, std::string PhoheNumber, std::string DarkSecret,
+		int index)
+	{
+		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		{
+			if (min == it->index)
+			{
+				it->FirstName = FirstName;
+				it->LastName = LastName;
+				it->Nickname = Nickname;
+				it->PhoneNumber = PhoheNumber;
+				it->DarkSecret = DarkSecret;
+				it->index = index;
+			}
+		}
+	}
 	std::string NewContact()
 	{
 		Contact Contact;
-		int len;
 		index++;
 		Contact.index = index;
 		std::cout << "Write new contact's first name." << std::endl;
@@ -29,24 +52,27 @@ class PhoneBook
 		std::cin >> Contact.DarkSecret;
 
 		int len = ContactLists.size();
-		if (len > 8)
+
+		if (len > 7)
 		{
-			FindMinIndex();
+			std::cout << "Length exceedeted : " << index << std::endl;
+			int min = FindMinIndex();
+			ReplaceContact(min, Contact.FirstName, Contact.LastName,
+				Contact.Nickname, Contact.PhoneNumber, Contact.DarkSecret,
+				Contact.index);
 		}
-		ContactLists.push_back(Contact);
+		else
+			ContactLists.push_back(Contact);
 
 		return ("The new contact is added to your phonebook successfully ! ");
 	}
-
-	
-	
 
 	void DisplayContactInfos()
 	{
 		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
 		{
-			FormatContact(FormatStr(it->FirstName), FormatStr(it->LastName),
-				FormatStr(it->Nickname), it->index);
+			FormatContact(it->index, FormatStr(it->FirstName),
+				FormatStr(it->LastName), FormatStr(it->Nickname));
 		}
 	}
 
@@ -65,7 +91,6 @@ class PhoneBook
 				return ;
 			}
 		}
-		std::cout << "Please verify the index..." << std::endl;
 	}
 
 	void SearchContact()
@@ -101,13 +126,12 @@ int	main(void)
 	SEARCH = "SEARCH";
 	EXIT = "EXIT";
 
-	while (42)
+	while (true)
 	{
 		std::cout << "Waiting you command ... : ";
 		std::cin >> Input;
 		if (std::cin.good() == false)
 			break ;
-
 		if (Input.compare(ADD) == 0)
 			std::cout << PhoneBook.NewContact() << std::endl;
 		else if (Input.compare(SEARCH) == 0)

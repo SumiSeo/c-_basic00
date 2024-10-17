@@ -20,8 +20,8 @@ class Contact
 };
 
 std::string FormatStr(std::string s);
-void	FormatContact(std::string FirstName, std::string LastName,
-			std::string Nickname, int index);
+void	FormatContact(int index, std::string LastName, std::string Nickname,
+			std::string FirstName);
 void	DisplayContactColumn(void);
 
 #endif // PHONEBOOK_HPP

@@ -12,8 +12,8 @@ std::string FormatStr(std::string s)
 		return (s);
 }
 
-void	FormatContact(std::string FirstName, std::string LastName,
-		std::string Nickname, int index)
+void	FormatContact(int index, std::string LastName, std::string Nickname,
+		std::string FirstName)
 {
 	std::cout << std::right << std::setw(10) << index << "|" << std::right << std::setw(10) << LastName << "|" << std::right << std::setw(10) << Nickname << "|" << std::right << std::setw(10) << FirstName << "|" << std::endl;
 }
