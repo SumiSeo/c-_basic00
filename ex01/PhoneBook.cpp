@@ -49,23 +49,39 @@ class PhoneBook
 					<< "|" << std::right << std::setw(10) << "Nickname"
 					<< "|" << std::endl;
 	}
+	void DisplayContactInfos()
+	{
+		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		{
+			FormatContact(FormatStr(it->FirstName), FormatStr(it->LastName),
+				FormatStr(it->Nickname), it->index);
+		}
+	}
 
-	std::string SearchContact()
+	void DisplayContact(int i)
+	{
+		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		{
+			if (i == it->index)
+			{
+				std::cout << "First Name : " << it->FirstName << std::endl;
+				std::cout << "Last Name : " << it->LastName << std::endl;
+				std::cout << "Nickname : " << it->Nickname << std::endl;
+				std::cout << "Index : " << it->index << std::endl;
+			}
+		}
+		std::cout << "Can not find the index..." << std::endl;
+	}
+
+	void SearchContact()
 	{
 		int i;
 
 		DisplayContactColumn();
-
-		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
-		{
-			// if (i == it->index)
-			FormatContact(FormatStr(it->FirstName), FormatStr(it->LastName),
-				FormatStr(it->Nickname), it->index);
-		}
-		std::cout << "Search your contact's information... :";
+		DisplayContactInfos();
+		std::cout << "Enter the index of column to display...";
 		std::cin >> i;
-
-		return ("Thank you !");
+		DisplayContact(i);
 	}
 
 	void exit()
@@ -96,7 +112,7 @@ int	main(int argc, char **argv)
 		if (Input.compare(ADD) == 0)
 			std::cout << PhoneBook.NewContact() << std::endl;
 		else if (Input.compare(SEARCH) == 0)
-			std::cout << PhoneBook.SearchContact() << std::endl;
+			PhoneBook.SearchContact();
 		else if (Input.compare(ADD) == 0)
 			std::cout << PhoneBook.NewContact() << std::endl;
 		else
