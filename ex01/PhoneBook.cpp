@@ -96,9 +96,8 @@ class PhoneBook
 	}
 };
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	(void)argv;
 	std::string Input;
 	std::string ADD;
 	std::string SEARCH;
@@ -108,13 +107,12 @@ int	main(int argc, char **argv)
 	SEARCH = "SEARCH";
 	EXIT = "EXIT";
 
-	if (argc > 1)
-		return (0);
-
 	while (42)
 	{
 		std::cout << "Waiting you command ... : ";
 		std::cin >> Input;
+		if (std::cin.good() == false)
+			break ;
 
 		if (Input.compare(ADD) == 0)
 			std::cout << PhoneBook.NewContact() << std::endl;
