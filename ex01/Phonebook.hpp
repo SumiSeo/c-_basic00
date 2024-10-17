@@ -19,4 +19,9 @@ class Contact
 	std::string DarkSecret;
 };
 
+std::string FormatStr(std::string s);
+void	FormatContact(std::string FirstName, std::string LastName,
+			std::string Nickname, int index);
+void	DisplayContactColumn(void);
+
 #endif // PHONEBOOK_HPP

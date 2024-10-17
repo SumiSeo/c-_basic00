@@ -6,9 +6,15 @@ class PhoneBook
 	std::list<Contact> ContactLists;
 	int index;
 
+	int FindMinIndex()
+	{
+		//iterate contact lists and find mininum index 
+	}
+
 	std::string NewContact()
 	{
 		Contact Contact;
+		int len;
 		index++;
 		Contact.index = index;
 		std::cout << "Write new contact's first name." << std::endl;
@@ -21,34 +27,20 @@ class PhoneBook
 		std::cin >> Contact.PhoneNumber;
 		std::cout << "Write new contact's darkest secret." << std::endl;
 		std::cin >> Contact.DarkSecret;
+
+		int len = ContactLists.size();
+		if (len > 8)
+		{
+			FindMinIndex();
+		}
 		ContactLists.push_back(Contact);
 
 		return ("The new contact is added to your phonebook successfully ! ");
 	}
-	std::string FormatStr(std::string s)
-	{
-		if (s.length() > 10)
-		{
-			std::string SplitStr = s.substr(0, 10);
-			SplitStr[9] = '.';
-			return (SplitStr);
-		}
-		else
-			return (s);
-	}
-	void FormatContact(std::string FirstName, std::string LastName,
-		std::string Nickname, int index)
-	{
-		std::cout << std::right << std::setw(10) << index << "|" << std::right << std::setw(10) << LastName << "|" << std::right << std::setw(10) << Nickname << "|" << std::right << std::setw(10) << FirstName << "|" << std::endl;
-	}
-	void DisplayContactColumn()
-	{
-		std::cout << std::right << std::setw(10) << "Index"
-					<< "|" << std::right << std::setw(10) << "FirstName"
-					<< "|" << std::right << std::setw(10) << "LastName"
-					<< "|" << std::right << std::setw(10) << "Nickname"
-					<< "|" << std::endl;
-	}
+
+	
+	
+
 	void DisplayContactInfos()
 	{
 		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
