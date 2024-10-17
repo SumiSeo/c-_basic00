@@ -4,6 +4,8 @@ class PhoneBook
 {
   public:
 	std::list<Contact> ContactLists;
+	// Contact Contact[8];
+
 	int index;
 
 	int FindMinIndex()

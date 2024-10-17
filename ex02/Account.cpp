@@ -1,6 +1,8 @@
 #include "Account.hpp"
 
-int	main(void)
+
+
+
+int	Account::getNbAccounts(void)
 {
-	std::cout << "TEST" << std::endl;
 }
