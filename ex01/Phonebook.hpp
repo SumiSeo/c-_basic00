@@ -3,6 +3,7 @@
 
 # include <iomanip>
 # include <iostream>
+# include <istream>
 # include <list>
 # include <ostream>
 # include <string>

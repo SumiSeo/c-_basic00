@@ -67,10 +67,13 @@ class PhoneBook
 				std::cout << "First Name : " << it->FirstName << std::endl;
 				std::cout << "Last Name : " << it->LastName << std::endl;
 				std::cout << "Nickname : " << it->Nickname << std::endl;
+				std::cout << "Phone Number : " << it->PhoneNumber << std::endl;
+				std::cout << "Dark Secret : " << it->DarkSecret << std::endl;
 				std::cout << "Index : " << it->index << std::endl;
+				return ;
 			}
 		}
-		std::cout << "Can not find the index..." << std::endl;
+		std::cout << "Please verify the index..." << std::endl;
 	}
 
 	void SearchContact()
@@ -79,9 +82,13 @@ class PhoneBook
 
 		DisplayContactColumn();
 		DisplayContactInfos();
+		std::cout << std::endl;
 		std::cout << "Enter the index of column to display...";
 		std::cin >> i;
-		DisplayContact(i);
+		if (i == 0)
+			std::cout << "Please verify the index..." << std::endl;
+		else
+			DisplayContact(i);
 	}
 
 	void exit()
