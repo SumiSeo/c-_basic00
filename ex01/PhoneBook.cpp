@@ -39,10 +39,7 @@ class PhoneBook
 	void FormatContact(std::string FirstName, std::string LastName,
 		std::string Nickname, int index)
 	{
-		std::cout << FirstName << std::endl;
-		std::cout << LastName << std::endl;
-		std::cout << Nickname << std::endl;
-		std::cout << index << std::endl;
+		std::cout << std::right << std::setw(10) << FirstName << "|" << std::right << std::setw(10) << LastName << "|" << std::right << std::setw(10) << Nickname << "|" << std::right << std::setw(10) << "|" << index << std::endl;
 	}
 
 	std::string SearchContact()
