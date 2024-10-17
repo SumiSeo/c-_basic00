@@ -10,7 +10,6 @@ class PhoneBook
 	{
 		Contact Contact;
 
-		index++;
 		Contact.index = index;
 		std::cout << "Write new contact's first name." << std::endl;
 		std::cin >> Contact.FirstName;
@@ -22,7 +21,7 @@ class PhoneBook
 		std::cin >> Contact.PhoneNumber;
 		std::cout << "Write new contact's darkest secret." << std::endl;
 		std::cin >> Contact.DarkSecret;
-
+		index++;
 		ContactLists.push_back(Contact);
 
 		return ("The new contact is added to your phonebook successfully ! ");
@@ -36,9 +35,12 @@ class PhoneBook
 
 		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
 		{
-			std::cout << it->FirstName << std::endl;
+			std::cout << it->index << std::endl;
+			std::cout << "user input i" << i << std::endl;
+			if (i == it->index)
+				std::cout << it->FirstName << std::endl;
 		}
-		return ("Contact Information : ");
+		return ("Thank you !");
 	}
 
 	void exit()
@@ -75,9 +77,6 @@ int	main(int argc, char **argv)
 		else if (Input.compare(ADD) == 0)
 			std::cout << PhoneBook.NewContact() << std::endl;
 		else
-		{
-			std::cout << "The Command is wrong" << std::endl;
-			break ;
-		}
+			std::cout << "Please write another command" << std::endl;
 	}
 }
