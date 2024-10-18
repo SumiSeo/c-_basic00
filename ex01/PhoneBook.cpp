@@ -42,7 +42,6 @@ void PhoneBook::DisplayContactInfos(void)
 }
 std::string PhoneBook::DeleteContact()
 {
-	
 	for (int i = 1; i < GetLength(ContactLists); i++)
 	{
 		ContactLists[i].index = 0;
@@ -54,21 +53,7 @@ std::string PhoneBook::DeleteContact()
 	}
 	return ("There are no more contacts left in you Phone book.");
 };
-void PhoneBook::SearchContact(void)
-{int	i;
-
-	DisplayContactColumn();
-	DisplayContactInfos();
-	std::cout << std::endl;
-	std::cout << "Enter the index of column to display...";
-	std::cin >> i;
-	if (i == 0)
-		std::cout << "Please verify the index..." << std::endl;
-	else
-		DisplayContact(i);
-}
-
-void	PhoneBook::DisplayContact(int i_origin)
+void PhoneBook::DisplayContact(int i_origin)
 {
 	for (int i = 1; i < GetLength(ContactLists); i++)
 	{
@@ -84,3 +69,19 @@ void	PhoneBook::DisplayContact(int i_origin)
 		}
 	}
 }
+void PhoneBook::SearchContact(void)
+{
+	int i;
+
+	DisplayContactColumn();
+	DisplayContactInfos();
+	std::cout << std::endl;
+	std::cout << "Enter the index of column to display...";
+	std::cin >> i;
+	if (i == 0)
+		std::cout << "Please verify the index..." << std::endl;
+	else
+		DisplayContact(i);
+}
+
+
