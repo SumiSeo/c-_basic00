@@ -120,9 +120,17 @@ class PhoneBook
 
 	std::string DeleteContact()
 	{
-		// ContactLists.erase(ContactLists.begin(), ContactLists.end());
+		for (int i = 1; i < GetLength(ContactLists); i++)
+		{
+			ContactLists[i].index = 0;
+			ContactLists[i].FirstName = "";
+			ContactLists[i].LastName = "";
+			ContactLists[i].Nickname = "";
+			ContactLists[i].PhoneNumber = "";
+			ContactLists[i].DarkSecret = "";
+		}
 		return ("There are no more contacts left in you Phone book.");
-	}
+	};
 };
 
 int	main(void)
