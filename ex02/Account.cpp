@@ -5,6 +5,16 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+Account::Account(int initial_deposit)
+{
+	std::cout << "Account created with initial deposit : " << initial_deposit << std::endl;
+}
+
+Account::~Account(void)
+{
+	std::cout << "Account destroyed" << std::endl;
+}
+
 int Account::getNbAccounts(void)
 {
 	return (Account::_nbAccounts);
