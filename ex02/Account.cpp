@@ -18,7 +18,8 @@ Account::Account(int initial_deposit) : _accountIndex(_nbAccounts++),
 
 Account::~Account(void)
 {
-	std::cout << "Account destroyed" << std::endl;
+	Account::_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
 
 int Account::getNbAccounts(void)
@@ -72,5 +73,7 @@ bool Account::makeWithdrawal(int withdrawal)
 void Account::displayStatus() const
 {
 	Account::_displayTimestamp();
+	// Account::_totalAmount = 0;
+
 	std::cout << " index:" << _accountIndex << ";amount:" << Account::getTotalAmount() << ";deposits:" << Account::getNbDeposits() << ";withdrawls:" << Account::getNbWithdrawals() << std::endl;
 }
