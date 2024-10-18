@@ -3,7 +3,7 @@
 class PhoneBook
 {
   public:
-	Contact ContactLists[8];
+	Contact ContactLists[9];
 
 	int index;
 	PhoneBook() : index(0)
@@ -88,7 +88,7 @@ class PhoneBook
 
 	void DisplayContact(int i_origin)
 	{
-		for (int i = 1; i < GetLength(ContactLists) + 1; i++)
+		for (int i = 1; i < GetLength(ContactLists); i++)
 		{
 			if (i_origin == ContactLists[i].index)
 			{

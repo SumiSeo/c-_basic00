@@ -27,12 +27,12 @@ void	DisplayContactColumn(void)
 				<< "|" << std::endl;
 }
 
-int	GetLength(Contact Lists[8])
+int	GetLength(Contact *Lists)
 {
 	int	i;
 
 	i = 1;
-	while (i < 9 && Lists[i].index != 0)
+	while (i <= 8 && Lists[i].index != 0)
 	{
 		i++;
 	}
