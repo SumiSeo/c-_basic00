@@ -23,5 +23,6 @@ std::string FormatStr(std::string s);
 void	FormatContact(int index, std::string LastName, std::string Nickname,
 			std::string FirstName);
 void	DisplayContactColumn(void);
+int		GetLength(Contact *Lists);
 
 #endif // __CONTACT_H__
