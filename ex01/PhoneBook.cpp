@@ -3,19 +3,24 @@
 class PhoneBook
 {
   public:
-	std::list<Contact> ContactLists;
-	// Contact Contact[8];
+	Contact ContactLists[8];
 
 	int index;
+	PhoneBook() : index(0)
+	{
+		for (int i = 1; i < 9; i++)
+		{
+			ContactLists[i].index = 0;
+		}
+	}
 
 	int FindMinIndex()
 	{
-		int min = ContactLists.begin()->index;
-		// iterate contact lists and find mininum index
-		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		int min = ContactLists[0].index;
+		for (int i = 1; i < GetLength(ContactLists); i++)
 		{
-			if (min > it->index)
-				min = it->index;
+			if (min > ContactLists[i].index)
+				min = ContactLists[i].index;
 		}
 		return (min);
 	}
@@ -24,24 +29,23 @@ class PhoneBook
 		std::string Nickname, std::string PhoheNumber, std::string DarkSecret,
 		int index)
 	{
-		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		for (int i = 1; i < GetLength(ContactLists); i++)
 		{
-			if (min == it->index)
+			if (min == ContactLists[i].index)
 			{
-				it->FirstName = FirstName;
-				it->LastName = LastName;
-				it->Nickname = Nickname;
-				it->PhoneNumber = PhoheNumber;
-				it->DarkSecret = DarkSecret;
-				it->index = index;
+				ContactLists[i].FirstName = FirstName;
+				ContactLists[i].LastName = LastName;
+				ContactLists[i].Nickname = Nickname;
+				ContactLists[i].PhoneNumber = PhoheNumber;
+				ContactLists[i].DarkSecret = DarkSecret;
+				ContactLists[i].index = index;
 			}
 		}
 	}
 	std::string NewContact()
 	{
 		Contact Contact;
-		index++;
-		Contact.index = index;
+
 		std::cout << "Write new contact's first name." << std::endl;
 		std::cin >> Contact.FirstName;
 		std::cout << "Write new contact's last name." << std::endl;
@@ -52,44 +56,48 @@ class PhoneBook
 		std::cin >> Contact.PhoneNumber;
 		std::cout << "Write new contact's darkest secret." << std::endl;
 		std::cin >> Contact.DarkSecret;
+		index++;
+		Contact.index = index;
 
-		int len = ContactLists.size();
-
-		if (len > 7)
+		int len = GetLength(ContactLists);
+		std::cout << "length check !" << len << std::endl;
+		if (len > 8)
 		{
-			std::cout << "Length exceedeted : " << index << std::endl;
+			std::cout << "Length exceedeed : " << index << std::endl;
 			int min = FindMinIndex();
 			ReplaceContact(min, Contact.FirstName, Contact.LastName,
 				Contact.Nickname, Contact.PhoneNumber, Contact.DarkSecret,
 				Contact.index);
 		}
 		else
-			ContactLists.push_back(Contact);
+			ContactLists[index] = Contact;
 
 		return ("The new contact is added to your phonebook successfully ! ");
 	}
 
 	void DisplayContactInfos()
 	{
-		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		for (int i = 1; i < GetLength(ContactLists); i++)
 		{
-			FormatContact(it->index, FormatStr(it->FirstName),
-				FormatStr(it->LastName), FormatStr(it->Nickname));
+			FormatContact(ContactLists[i].index,
+				FormatStr(ContactLists[i].FirstName),
+				FormatStr(ContactLists[i].LastName),
+				FormatStr(ContactLists[i].Nickname));
 		}
 	}
 
-	void DisplayContact(int i)
+	void DisplayContact(int i_origin)
 	{
-		for (std::list<Contact>::iterator it = ContactLists.begin(); it != ContactLists.end(); it++)
+		for (int i = 1; i < GetLength(ContactLists) + 1; i++)
 		{
-			if (i == it->index)
+			if (i_origin == ContactLists[i].index)
 			{
-				std::cout << "First Name : " << it->FirstName << std::endl;
-				std::cout << "Last Name : " << it->LastName << std::endl;
-				std::cout << "Nickname : " << it->Nickname << std::endl;
-				std::cout << "Phone Number : " << it->PhoneNumber << std::endl;
-				std::cout << "Dark Secret : " << it->DarkSecret << std::endl;
-				std::cout << "Index : " << it->index << std::endl;
+				std::cout << "First Name : " << ContactLists[i].FirstName << std::endl;
+				std::cout << "Last Name : " << ContactLists[i].LastName << std::endl;
+				std::cout << "Nickname : " << ContactLists[i].Nickname << std::endl;
+				std::cout << "Phone Number : " << ContactLists[i].PhoneNumber << std::endl;
+				std::cout << "Dark Secret : " << ContactLists[i].DarkSecret << std::endl;
+				std::cout << "Index : " << ContactLists[i].index << std::endl;
 				return ;
 			}
 		}
@@ -112,7 +120,7 @@ class PhoneBook
 
 	std::string DeleteContact()
 	{
-		ContactLists.erase(ContactLists.begin(), ContactLists.end());
+		// ContactLists.erase(ContactLists.begin(), ContactLists.end());
 		return ("There are no more contacts left in you Phone book.");
 	}
 };
