@@ -86,8 +86,6 @@ bool Account::makeWithdrawal(int withdrawal)
 		Account::_totalAmount = _totalAmount - withdrawal;
 	}
 	else
-	{
 		std::cout << " index:" << _accountIndex << ";p_amount:" << Account::_amount << ";withdrawl:refused" << std::endl;
-	}
 	return (true);
 }
