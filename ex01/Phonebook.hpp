@@ -3,6 +3,7 @@
 # define __PHONEBOOK__H
 
 # include "Contact.hpp"
+# include "colors.hpp"
 # include <iomanip>
 # include <iostream>
 # include <istream>
