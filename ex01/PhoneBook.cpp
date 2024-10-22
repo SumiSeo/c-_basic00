@@ -2,7 +2,7 @@
 
 void PhoneBook::ReplaceContact(int min, std::string FirstName,
 	std::string LastName, std::string Nickname, std::string PhoneNumber,
-	std::string DarkSecret)
+	std::string DarkSecret, int index)
 {
 	for (int i = 1; i < GetLength(ContactLists); i++)
 	{
@@ -13,7 +13,7 @@ void PhoneBook::ReplaceContact(int min, std::string FirstName,
 			ContactLists[i].SetNickname(Nickname);
 			ContactLists[i].SetPhoneNumber(PhoneNumber);
 			ContactLists[i].SetDarkSecret(DarkSecret);
-			ContactLists[i].SetIndex(i);
+			ContactLists[i].SetIndex(index);
 		}
 	}
 }

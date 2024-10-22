@@ -84,7 +84,7 @@ int	GetLength(Contact *Lists)
 	int	i;
 
 	i = 1;
-	while (i <= 1 && Lists[i].GetIndex() != 0 && Lists[i].GetFirstName() != "")
+	while (i <= 8 && Lists[i].GetIndex() != 0 && Lists[i].GetFirstName() != "")
 	{
 		i++;
 	}

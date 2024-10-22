@@ -58,7 +58,7 @@ class PhoneBook
 			int min = FindMinIndex();
 			ReplaceContact(min, Contact.GetFirstName(), Contact.GetLastName(),
 				Contact.GetNickname(), Contact.GetPhoneNumber(),
-				Contact.GetDarkSecret());
+				Contact.GetDarkSecret(), Contact.GetIndex());
 		}
 		else
 			ContactLists[index] = Contact;
@@ -70,7 +70,8 @@ class PhoneBook
 	void DisplayContact(int i_origin);
 	void SearchContact();
 	void ReplaceContact(int min, std::string FirstName, std::string LastName,
-		std::string Nickname, std::string PhoheNumber, std::string DarkSecret);
+		std::string Nickname, std::string PhoheNumber, std::string DarkSecret,
+		int index);
 
 	int FindMinIndex();
 	std::string DeleteContact();
