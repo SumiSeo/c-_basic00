@@ -1,5 +1,57 @@
 #include "Phonebook.hpp"
 
+std::string Contact::GetFirstName()
+{
+	return (this->FirstName);
+}
+std::string Contact::GetLastName()
+{
+	return (this->LastName);
+}
+std::string Contact::GetNickname()
+{
+	return (this->Nickname);
+}
+
+std::string Contact::GetPhoneNumber()
+{
+	return (this->PhoneNumber);
+}
+
+std::string Contact::GetDarkSecret()
+{
+	return (this->DarkSecret);
+}
+int Contact::GetIndex(void)
+{
+	return (this->index);
+}
+void Contact::SetFirstName(std::string FirstName)
+{
+	(this->FirstName = FirstName);
+}
+
+void Contact::SetLastName(std::string LastName)
+{
+	(this->LastName = LastName);
+}
+void Contact::SetNickname(std::string Nickname)
+{
+	(this->Nickname = Nickname);
+}
+void Contact::SetPhoneNumber(std::string PhoneNumber)
+{
+	(this->PhoneNumber = PhoneNumber);
+}
+void Contact::SetDarkSecret(std::string DarkSecret)
+{
+	(this->DarkSecret = DarkSecret);
+}
+
+void Contact::SetIndex(int i)
+{
+	(this->index = i);
+}
 std::string FormatStr(std::string s)
 {
 	if (s.length() > 10)
@@ -32,7 +84,7 @@ int	GetLength(Contact *Lists)
 	int	i;
 
 	i = 1;
-	while (i <= 8 && Lists[i].index != 0)
+	while (i <= 1 && Lists[i].GetIndex() != 0 && Lists[i].GetFirstName() != "")
 	{
 		i++;
 	}

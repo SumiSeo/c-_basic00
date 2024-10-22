@@ -11,6 +11,20 @@
 class Contact
 {
   public:
+	std::string GetFirstName();
+	std::string GetLastName();
+	std::string GetNickname();
+	std::string GetPhoneNumber();
+	std::string GetDarkSecret();
+	int GetIndex();
+	void SetFirstName(std::string FirstName);
+	void SetLastName(std::string LastName);
+	void SetNickname(std::string Nickname);
+	void SetPhoneNumber(std::string PhoneNumber);
+	void SetDarkSecret(std::string DarkSecret);
+	void SetIndex(int i);
+
+  private:
 	int index;
 	std::string FirstName;
 	std::string LastName;

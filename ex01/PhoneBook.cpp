@@ -1,19 +1,19 @@
 #include "Phonebook.hpp"
 
 void PhoneBook::ReplaceContact(int min, std::string FirstName,
-	std::string LastName, std::string Nickname, std::string PhoheNumber,
-	std::string DarkSecret, int index)
+	std::string LastName, std::string Nickname, std::string PhoneNumber,
+	std::string DarkSecret)
 {
 	for (int i = 1; i < GetLength(ContactLists); i++)
 	{
-		if (min == ContactLists[i].index)
+		if (min == ContactLists[i].GetIndex())
 		{
-			ContactLists[i].FirstName = FirstName;
-			ContactLists[i].LastName = LastName;
-			ContactLists[i].Nickname = Nickname;
-			ContactLists[i].PhoneNumber = PhoheNumber;
-			ContactLists[i].DarkSecret = DarkSecret;
-			ContactLists[i].index = index;
+			ContactLists[i].SetFirstName(FirstName);
+			ContactLists[i].SetLastName(LastName);
+			ContactLists[i].SetNickname(Nickname);
+			ContactLists[i].SetPhoneNumber(PhoneNumber);
+			ContactLists[i].SetDarkSecret(DarkSecret);
+			ContactLists[i].SetIndex(i);
 		}
 	}
 }
@@ -22,34 +22,37 @@ int PhoneBook::FindMinIndex()
 {
 	int	min;
 
-	min = ContactLists[0].index;
+	min = ContactLists[0].GetIndex();
 	for (int i = 1; i < GetLength(ContactLists); i++)
 	{
-		if (min > ContactLists[i].index)
-			min = ContactLists[i].index;
+		if (min > ContactLists[i].GetIndex())
+			min = ContactLists[i].GetIndex();
 	}
 	return (min);
 }
 void PhoneBook::DisplayContactInfos(void)
 {
-	for (int i = 1; i < GetLength(ContactLists); i++)
+	int	length;
+
+	length = GetLength(ContactLists);
+	for (int i = 1; i < length; i++)
 	{
-		FormatContact(ContactLists[i].index,
-			FormatStr(ContactLists[i].FirstName),
-			FormatStr(ContactLists[i].LastName),
-			FormatStr(ContactLists[i].Nickname));
+		FormatContact(ContactLists[i].GetIndex(),
+			FormatStr(ContactLists[i].GetFirstName()),
+			FormatStr(ContactLists[i].GetLastName()),
+			FormatStr(ContactLists[i].GetNickname()));
 	}
 }
 std::string PhoneBook::DeleteContact()
 {
 	for (int i = 1; i < GetLength(ContactLists); i++)
 	{
-		ContactLists[i].index = 0;
-		ContactLists[i].FirstName = "";
-		ContactLists[i].LastName = "";
-		ContactLists[i].Nickname = "";
-		ContactLists[i].PhoneNumber = "";
-		ContactLists[i].DarkSecret = "";
+		ContactLists[i].SetIndex(0);
+		ContactLists[i].SetFirstName("");
+		ContactLists[i].SetLastName("");
+		ContactLists[i].SetNickname("");
+		ContactLists[i].SetPhoneNumber("");
+		ContactLists[i].SetDarkSecret("");
 	}
 	return ("There are no more contacts left in you Phone book.");
 };
@@ -57,21 +60,21 @@ void PhoneBook::DisplayContact(int i_origin)
 {
 	for (int i = 1; i < GetLength(ContactLists); i++)
 	{
-		if (i_origin == ContactLists[i].index)
+		if (i_origin == ContactLists[i].GetIndex())
 		{
-			std::cout << "First Name : " << ContactLists[i].FirstName << std::endl;
-			std::cout << "Last Name : " << ContactLists[i].LastName << std::endl;
-			std::cout << "Nickname : " << ContactLists[i].Nickname << std::endl;
-			std::cout << "Phone Number : " << ContactLists[i].PhoneNumber << std::endl;
-			std::cout << "Dark Secret : " << ContactLists[i].DarkSecret << std::endl;
-			std::cout << "Index : " << ContactLists[i].index << std::endl;
+			std::cout << "First Name : " << ContactLists[i].GetFirstName() << std::endl;
+			std::cout << "Last Name : " << ContactLists[i].GetLastName() << std::endl;
+			std::cout << "Nickname : " << ContactLists[i].GetNickname() << std::endl;
+			std::cout << "Phone Number : " << ContactLists[i].GetPhoneNumber() << std::endl;
+			std::cout << "Dark Secret : " << ContactLists[i].GetDarkSecret() << std::endl;
+			std::cout << "Index : " << ContactLists[i].GetIndex() << std::endl;
 			return ;
 		}
 	}
 }
 void PhoneBook::SearchContact(void)
 {
-	int i;
+	int	i;
 
 	DisplayContactColumn();
 	DisplayContactInfos();
@@ -83,5 +86,3 @@ void PhoneBook::SearchContact(void)
 	else
 		DisplayContact(i);
 }
-
-

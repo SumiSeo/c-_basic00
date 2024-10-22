@@ -20,36 +20,45 @@ class PhoneBook
 	{
 		for (int i = 1; i < 9; i++)
 		{
-			ContactLists[i].index = 0;
+			ContactLists[i].GetIndex();
 		}
 	}
 
 	std::string NewContact()
 	{
 		Contact Contact;
+		std::string FirstName;
+		std::string LastName;
+		std::string Nickname;
+		std::string PhoneNumber;
+		std::string DarkSecret;
 
 		std::cout << "Write new contact's first name." << std::endl;
-		std::cin >> Contact.FirstName;
+		std::cin >> FirstName;
 		std::cout << "Write new contact's last name." << std::endl;
-		std::cin >> Contact.LastName;
+		std::cin >> LastName;
 		std::cout << "Write new contact's nickname." << std::endl;
-		std::cin >> Contact.Nickname;
+		std::cin >> Nickname;
 		std::cout << "Write new contact's phone number." << std::endl;
-		std::cin >> Contact.PhoneNumber;
+		std::cin >> PhoneNumber;
 		std::cout << "Write new contact's darkest secret." << std::endl;
-		std::cin >> Contact.DarkSecret;
+		std::cin >> DarkSecret;
 		index++;
-		Contact.index = index;
+		Contact.SetIndex(index);
+		Contact.SetFirstName(FirstName);
+		Contact.SetLastName(LastName);
+		Contact.SetNickname(Nickname);
+		Contact.SetDarkSecret(DarkSecret);
+		Contact.SetPhoneNumber(PhoneNumber);
 
 		int len = GetLength(ContactLists);
-		std::cout << "length check !" << len << std::endl;
 		if (len > 8)
 		{
 			std::cout << "Length exceedeed : " << index << std::endl;
 			int min = FindMinIndex();
-			ReplaceContact(min, Contact.FirstName, Contact.LastName,
-				Contact.Nickname, Contact.PhoneNumber, Contact.DarkSecret,
-				Contact.index);
+			ReplaceContact(min, Contact.GetFirstName(), Contact.GetLastName(),
+				Contact.GetNickname(), Contact.GetPhoneNumber(),
+				Contact.GetDarkSecret());
 		}
 		else
 			ContactLists[index] = Contact;
@@ -61,8 +70,7 @@ class PhoneBook
 	void DisplayContact(int i_origin);
 	void SearchContact();
 	void ReplaceContact(int min, std::string FirstName, std::string LastName,
-		std::string Nickname, std::string PhoheNumber, std::string DarkSecret,
-		int index);
+		std::string Nickname, std::string PhoheNumber, std::string DarkSecret);
 
 	int FindMinIndex();
 	std::string DeleteContact();
